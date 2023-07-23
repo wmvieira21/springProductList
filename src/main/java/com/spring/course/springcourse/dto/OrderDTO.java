@@ -1,0 +1,46 @@
+package com.spring.course.springcourse.dto;
+
+import java.time.Instant;
+
+import org.springframework.beans.BeanUtils;
+
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.spring.course.springcourse.entities.Order;
+import com.spring.course.springcourse.entities.User;
+
+public class OrderDTO {
+
+	private Long id;
+	private Instant moment;
+	private User client;
+
+	public OrderDTO(Order order) {
+		BeanUtils.copyProperties(order, this);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
+	public User getClient() {
+		return client;
+	}
+
+	public void setClient(User client) {
+		this.client = client;
+	}
+}
