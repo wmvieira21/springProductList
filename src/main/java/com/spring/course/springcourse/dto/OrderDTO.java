@@ -9,11 +9,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.course.springcourse.entities.Order;
 import com.spring.course.springcourse.entities.User;
+import com.spring.course.springcourse.entities.enums.OrderStatus;
 
 public class OrderDTO {
 
 	private Long id;
 	private Instant moment;
+	private Integer orderStatus;
 	private User client;
 
 	public OrderDTO(Order order) {
@@ -43,4 +45,13 @@ public class OrderDTO {
 	public void setClient(User client) {
 		this.client = client;
 	}
+
+	public OrderStatus getOrderStatus() {
+		return OrderStatus.valueOf(orderStatus);
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		this.orderStatus = orderStatus.getCode();
+	}
+	
 }
