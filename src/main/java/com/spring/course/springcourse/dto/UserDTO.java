@@ -22,6 +22,7 @@ public class UserDTO {
 
 	public UserDTO(User user) {
 		BeanUtils.copyProperties(user, this);
+		this.orders = user.getOrders();
 	}
 
 	public Long getId() {
@@ -67,9 +68,4 @@ public class UserDTO {
 	public List<Order> getOrders() {
 		return orders;
 	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
 }

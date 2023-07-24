@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.spring.course.springcourse.entities.Category;
 import com.spring.course.springcourse.entities.Order;
+import com.spring.course.springcourse.entities.Product;
 import com.spring.course.springcourse.entities.User;
 import com.spring.course.springcourse.entities.enums.OrderStatus;
 import com.spring.course.springcourse.repository.CategoryRepository;
 import com.spring.course.springcourse.repository.OrderRepository;
+import com.spring.course.springcourse.repository.ProductRepository;
 import com.spring.course.springcourse.repository.UserRepository;
 
 @Configuration
@@ -27,11 +29,13 @@ public class TestConfig implements CommandLineRunner {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user = new User(null, "william", "a@gmail.com", "475454", "pass", null);
-		User user1 = new User(null, "Adri", "asasa@gmail.com", "0000", "pasasass", null);
+		User user = new User(null, "william", "a@gmail.com", "475454", "pass");
+		User user1 = new User(null, "Adri", "asasa@gmail.com", "0000", "pasasass");
 
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, user);
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, user1);
@@ -41,8 +45,15 @@ public class TestConfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
 
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
 		userRepository.saveAll(Arrays.asList(user, user1));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 	}
 }

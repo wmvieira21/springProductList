@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.course.springcourse.dto.CategoryDTO;
-import com.spring.course.springcourse.services.CategoryService;
+import com.spring.course.springcourse.dto.ProductDTO;
+import com.spring.course.springcourse.repository.ProductService;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryController {
+@RequestMapping(value = "/products")
+public class ProductController {
 
 	@Autowired
-	private CategoryService categoryService;
+	private ProductService productService;
 
 	@GetMapping
-	public List<CategoryDTO> findAll() {
-		return categoryService.findAll();
+	public List<ProductDTO> findAll() {
+		return productService.findAll();
 	}
 
 	@GetMapping(value = "/{id}")
-	public CategoryDTO findByID(@PathVariable Long id) {
-		return categoryService.findById(id);
+	public ProductDTO findById(@PathVariable Long id) {
+		return productService.findById(id);
 	}
 }
