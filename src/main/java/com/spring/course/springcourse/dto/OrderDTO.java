@@ -1,13 +1,12 @@
 package com.spring.course.springcourse.dto;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
-
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.spring.course.springcourse.entities.Order;
+import com.spring.course.springcourse.entities.OrderItem;
 import com.spring.course.springcourse.entities.User;
 import com.spring.course.springcourse.entities.enums.OrderStatus;
 
@@ -17,9 +16,11 @@ public class OrderDTO {
 	private Instant moment;
 	private Integer orderStatus;
 	private User client;
+	private Set<OrderItem> items = new HashSet<>();
 
 	public OrderDTO(Order order) {
 		BeanUtils.copyProperties(order, this);
+		items = order.getItems();
 	}
 
 	public Long getId() {
@@ -53,5 +54,8 @@ public class OrderDTO {
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus.getCode();
 	}
-	
+
+	public Set<OrderItem> getItems() {
+		return items;
+	}
 }
