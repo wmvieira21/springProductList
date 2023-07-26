@@ -33,23 +33,6 @@ public class OrderItem implements Serializable {
 		this.quantity = quantity;
 		this.price = price;
 	}
-	
-	@JsonIgnore
-	public Order getOrder() {
-		return this.id.getOrder();
-	}
-	
-	public void setOrder(Order order) {
-		this.id.setOrder(order);
-	}
-	
-	public Product getProduct() {
-		return this.id.getProduct();
-	}
-
-	public void setProduct(Product product) {
-		this.id.setProduct(product);
-	}
 
 	public Integer getQuantity() {
 		return quantity;
@@ -65,6 +48,27 @@ public class OrderItem implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getSubTotal() {
+		return price * quantity;
+	}
+
+	@JsonIgnore
+	public Order getOrder() {
+		return this.id.getOrder();
+	}
+
+	public void setOrder(Order order) {
+		this.id.setOrder(order);
+	}
+
+	public Product getProduct() {
+		return this.id.getProduct();
+	}
+
+	public void setProduct(Product product) {
+		this.id.setProduct(product);
 	}
 
 	@Override

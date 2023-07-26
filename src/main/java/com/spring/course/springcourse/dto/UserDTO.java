@@ -15,6 +15,8 @@ public class UserDTO {
 	private String email;
 	private String phone;
 	private String password;
+	
+	@JsonIgnore
 	private List<Order> orders;
 
 	public UserDTO() {

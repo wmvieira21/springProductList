@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.course.springcourse.entities.Order;
 import com.spring.course.springcourse.entities.OrderItem;
+import com.spring.course.springcourse.entities.Payment;
 import com.spring.course.springcourse.entities.User;
 import com.spring.course.springcourse.entities.enums.OrderStatus;
 
@@ -18,11 +19,14 @@ public class OrderDTO {
 	private Instant moment;
 	private Integer orderStatus;
 	private User client;
+	private Payment payment;
 	private Set<OrderItem> items;
+	private Double total;
 
 	public OrderDTO(Order order) {
 		BeanUtils.copyProperties(order, this);
 		setItems(order.getItems());
+		setTotal(order.getTotal());
 	}
 
 	public Long getId() {
@@ -64,4 +68,21 @@ public class OrderDTO {
 	public void setItems(Set<OrderItem> items) {
 		this.items = items;
 	}
+
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	
 }

@@ -101,7 +101,8 @@ public class Product implements Serializable {
 	
 	@JsonIgnore
 	public Set<OrderDTO> getOrders() {
-		return items.stream().map(c -> c.getOrder()).map(OrderDTO::new).collect(Collectors.toSet());
+		return items.stream().map(c -> c.getOrder())
+				.map(OrderDTO::new).collect(Collectors.toSet());
 	}
 
 	@Override

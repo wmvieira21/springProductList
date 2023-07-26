@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.course.springcourse.dto.UserDTO;
+import com.spring.course.springcourse.entities.User;
 import com.spring.course.springcourse.repository.UserRepository;
 
 @Service
@@ -20,5 +21,9 @@ public class UserService {
 
 	public UserDTO findById(Long id) {
 		return new UserDTO(userRepository.findById(id).get());
+	}
+
+	public UserDTO insert(User user) {
+		return new UserDTO(userRepository.save(user));
 	}
 }
