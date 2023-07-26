@@ -3,6 +3,7 @@ package com.spring.course.springcourse.entities.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.course.springcourse.entities.Order;
 import com.spring.course.springcourse.entities.Product;
 
@@ -24,7 +25,7 @@ public class OrderItemPK implements Serializable {
 	private Product product;
 
 	public Order getOrder() {
-		return order;
+		return this.order;
 	}
 
 	public void setOrder(Order order) {
@@ -32,7 +33,7 @@ public class OrderItemPK implements Serializable {
 	}
 
 	public Product getProduct() {
-		return product;
+		return this.product;
 	}
 
 	public void setProduct(Product product) {

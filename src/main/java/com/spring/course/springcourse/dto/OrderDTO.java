@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.course.springcourse.entities.Order;
 import com.spring.course.springcourse.entities.OrderItem;
 import com.spring.course.springcourse.entities.User;
@@ -16,11 +18,11 @@ public class OrderDTO {
 	private Instant moment;
 	private Integer orderStatus;
 	private User client;
-	private Set<OrderItem> items = new HashSet<>();
+	private Set<OrderItem> items;
 
 	public OrderDTO(Order order) {
 		BeanUtils.copyProperties(order, this);
-		items = order.getItems();
+		setItems(order.getItems());
 	}
 
 	public Long getId() {
@@ -57,5 +59,9 @@ public class OrderDTO {
 
 	public Set<OrderItem> getItems() {
 		return items;
+	}
+
+	public void setItems(Set<OrderItem> items) {
+		this.items = items;
 	}
 }

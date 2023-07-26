@@ -5,10 +5,13 @@ import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+import com.spring.course.springcourse.dto.OrderDTO;
+import com.spring.course.springcourse.dto.ProductDTO;
 import com.spring.course.springcourse.entities.enums.OrderStatus;
 
 import jakarta.persistence.Entity;
@@ -39,7 +42,6 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "client")
 	private User client;
-	
 	
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
