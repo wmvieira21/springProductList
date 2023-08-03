@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-		@ExceptionHandler(ResourceNotFoundExpection.class)
+	@ExceptionHandler(ResourceNotFoundExpection.class)
 	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundExpection e, HttpServletRequest request) {
 		String error = "Resource not found";
 		HttpStatus status = HttpStatus.NOT_FOUND;
